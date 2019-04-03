@@ -6,16 +6,17 @@
  */
 
 import React, { Component } from "react";
-import { BrowserRouter as Router, Route, Link} from "react-router-dom";
-import { Layout, Menu} from 'antd';
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import { Layout } from 'antd';
 import './App.css';
-import Middle from './Middle.js'
-import Home from './Home'
-import Admin from './Admin'
+import Middle from './component/Middle.js'
+import Home from './component/Home.js'
+import Admin from './component/Admin.js'
+import Head from './component/Head.js'
 
-import CustomLinkExample from './customeLink'
+import CustomLinkExample from './component/customeLink'
 
-const { Header } = Layout
+
 
 
 
@@ -51,12 +52,12 @@ class App extends Component {
                 console.log('APP willmount: ', data)
 
                 var List = new Map()
-                data.map((value) => {
-                    value.docs.map(title => {
+                data.map((value) => (
+                    value.docs.map(title => (
                         // List[title] = value.title
                         List.set(title,value.title)
-                    })
-                })
+                    ))
+                ))
                 console.log('APP willmount, LIST: ', List)
                 // 将数据保存到 json 里
                 this.setState({
@@ -108,36 +109,18 @@ class App extends Component {
     }
     // 渲染顶部的导航栏
     render() {
-        console.log('APP render: ', this.props)
-        console.log('APP render: ', this.state)
         return (
             <Router>
                 <Layout>
                     {/* 顶部导航栏 */}
-                    <Header style={{position: "fixed", zIndex: 1, width:"100%"}}> 
-                        {/* <Link to="/">首页</Link>
-                        <Link to="/docs">文档</Link> */}
-                        <Menu
-                            theme="dark"
-                            mode="horizontal"
-                            onClick={this.hanleClick}
-                            // onSelect={this.onSelect}
-                            // selectedKeys={this.state.selectedKeys}
-                            // defaultSelectedKeys={['首页']}
-                            style={{ lineHeight: '64px'}}
-                        >
-                            <Menu.Item key="/"><Link to="/">首页</Link></Menu.Item>
-                            <Menu.Item key="/docs"><Link to="/docs">文档</Link></Menu.Item>
-                            <Menu.Item key="/admin"><Link to="/admin">后台</Link></Menu.Item>
-                            {/* <Menu.Item key="/test"><Link to="/test">测试</Link></Menu.Item> */}
-                        </Menu>
-                    </Header>
+                    <Head />
                     {/* 跳转到首页组件 */}
                     <Route exact path="/" render={(props) => <Home {...props} />} />
                     {/* 跳转到中部显示页面，拒绝第一次渲染，避免 titleList 为空 */}
                     <Route path="/docs" render={(props) =>{if(this.state.json.length === 0) return null; return <Middle  {...props} titleList={this.state.titleList} json={this.state.json}  />}} />
+                    {/* <Route path='/docs' render={(props) => <Middle {...props} />} /> */}
                     <Route path='/admin' render={(props) => <Admin {...props} />} />
-                    {/* <Route path='/test' render={() => <CustomLinkExample /> } /> */}
+                    <Route path='/test' render={() => <CustomLinkExample /> } />
                 </Layout>
             </Router>
         )

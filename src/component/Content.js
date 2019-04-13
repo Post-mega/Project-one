@@ -110,7 +110,7 @@ class Content extends Component {
                 <Layout className='middle'>
 
                     {/* 侧边栏 */}
-                    <Sider className="sider">
+                    <Sider width={300} height={100} className="sider">
                         <Menu
                             mode="inline"
                             // multiple

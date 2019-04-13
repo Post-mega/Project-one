@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route, NavLink } from "react-router-dom";
 import { Layout, Menu, Icon } from 'antd';
-import Display from './Page'
+import Display from '../Page/Page'
 
 const { SubMenu } = Menu
 const { Sider } = Layout
@@ -12,7 +12,7 @@ const { Sider } = Layout
  * 文字显示调用 Display 组件
  * 
  */
-class Middle extends Component {
+class Content extends Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -110,10 +110,7 @@ class Middle extends Component {
                 <Layout className='middle'>
 
                     {/* 侧边栏 */}
-                    <Sider 
-                        width={400} 
-                        style={{ overflow: 'auto', height: '100vh', position: 'fixed', right: 0  }}
-                    >
+                    <Sider className="sider">
                         <Menu
                             mode="inline"
                             // multiple
@@ -153,7 +150,7 @@ class Middle extends Component {
                     {/* 文章内容部分，调用 Display 组件进行显示 */}
                     <Route exact path={`${match.url}/:ID`} render={(props) => <Display {...props} page={this.state.page} />} />
                     {/* 默认显示 */}
-                    <Route path={match.url} render={() => <h3>Please select a topic.</h3>} />
+                    <Route path={match.url} exact render={() => <h3>Please select a topic.</h3>} />
                 </Layout>
 
             </Router>
@@ -163,4 +160,4 @@ class Middle extends Component {
 
 
 
-export default Middle
+export default Content

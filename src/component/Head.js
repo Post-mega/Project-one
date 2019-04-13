@@ -6,7 +6,7 @@ const {Header} = Layout
 class Head extends Component {
     render() {
         return (
-            <Header style={{ position: "fixed", zIndex: 1, width: "100%" }}>
+            <Header className='head'>
                 {/* <Link to="/">首页</Link>
                         <Link to="/docs">文档</Link> */}
                 <Menu

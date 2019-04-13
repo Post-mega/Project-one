@@ -9,9 +9,9 @@ import React, { Component } from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import { Layout } from 'antd';
 import './App.css';
-import Middle from './component/Middle.js'
-import Home from './component/Home.js'
-import Admin from './component/Admin.js'
+import Content from './component/Content.js'
+import Home from './Page/Home.js'
+import Admin from './Page/Admin.js'
 import Head from './component/Head.js'
 
 import CustomLinkExample from './component/customeLink'
@@ -111,13 +111,13 @@ class App extends Component {
     render() {
         return (
             <Router>
-                <Layout>
+                <Layout style={{minHeight: '100vh'}}>
                     {/* 顶部导航栏 */}
                     <Head />
                     {/* 跳转到首页组件 */}
                     <Route exact path="/" render={(props) => <Home {...props} />} />
                     {/* 跳转到中部显示页面，拒绝第一次渲染，避免 titleList 为空 */}
-                    <Route path="/docs" render={(props) =>{if(this.state.json.length === 0) return null; return <Middle  {...props} titleList={this.state.titleList} json={this.state.json}  />}} />
+                    <Route path="/docs" render={(props) =>{if(this.state.json.length === 0) return null; return <Content  {...props} titleList={this.state.titleList} json={this.state.json}  />}} />
                     {/* <Route path='/docs' render={(props) => <Middle {...props} />} /> */}
                     <Route path='/admin' render={(props) => <Admin {...props} />} />
                     <Route path='/test' render={() => <CustomLinkExample /> } />

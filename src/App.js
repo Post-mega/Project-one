@@ -14,12 +14,6 @@ import Home from './Page/Home.js'
 import Admin from './Page/Admin.js'
 import Head from './component/Head.js'
 
-import CustomLinkExample from './component/customeLink'
-
-
-
-
-
 /**
  * 程序的入口
  * 主要渲染顶部的导航栏部分
@@ -120,7 +114,6 @@ class App extends Component {
                     <Route path="/docs" render={(props) =>{if(this.state.json.length === 0) return null; return <Content  {...props} titleList={this.state.titleList} json={this.state.json}  />}} />
                     {/* <Route path='/docs' render={(props) => <Middle {...props} />} /> */}
                     <Route path='/admin' render={(props) => <Admin {...props} />} />
-                    <Route path='/test' render={() => <CustomLinkExample /> } />
                 </Layout>
             </Router>
         )

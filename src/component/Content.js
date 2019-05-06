@@ -30,9 +30,9 @@ class Content extends Component {
     getOnePage = (title) => {
         // 根据文章名查询到目录名
         var dir = this.props.titleList.get(title)
-        console.log('')
-        console.log('title: ', title)
-        console.log('dir: ', dir)
+        // console.log('')
+        // console.log('title: ', title)
+        // console.log('dir: ', dir)
         // 请求后台
         fetch('http://localhost:3001/docs', {
             method: 'POST',
@@ -65,14 +65,14 @@ class Content extends Component {
      * 控制 Menu 的展开
      */
     onOpenCheck = () => {
-        console.log(this.props)
+        // console.log(this.props)
         // 获取当前地址栏中的地址
         var location = this.props.location.pathname.split('/')[2]
-        console.log(location)
+        // console.log(location)
         // 在titleList中索引到当前的文件夹名
-        console.log(this.props)
+        // console.log(this.props)
         var openkey = this.props.titleList.get(location)
-        console.log(openkey)
+        // console.log(openkey)
         // 设置openKeys和selectedKeys
         this.setState({
             openKeys: this.state.openKeys.concat(openkey),
@@ -88,7 +88,7 @@ class Content extends Component {
 
     // 上方复选框取消选择
     onDeselect(info) {
-        console.log('deselect ', info);
+        // console.log('deselect ', info);
     }
 
     // 鼠标滑过下方Menu

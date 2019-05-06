@@ -43,7 +43,7 @@ class App extends Component {
         fetch('http://localhost:3001/build', { method: 'get', })
             .then(e => e.json())
             .then((data) => {
-                console.log('APP willmount: ', data)
+                // console.log('APP willmount: ', data)
 
                 var List = new Map()
                 data.map((value) => (

@@ -52,7 +52,7 @@ class App extends Component {
                         List.set(title,value.title)
                     ))
                 ))
-                console.log('APP willmount, LIST: ', List)
+                // console.log('APP willmount, LIST: ', List)
                 // 将数据保存到 json 里
                 this.setState({
                     json: data,
@@ -87,7 +87,7 @@ class App extends Component {
      * 控制 Menu 的展开
      */
     onOpenClick = (e) => {
-        console.log('e: ', e)
+        // console.log('e: ', e)
         console.log(this.props.history)
         // var location = this.props.location.pathname.split('/')[2]
         // console.log(location)
@@ -95,7 +95,7 @@ class App extends Component {
 
     // 拒绝组件的第一次更新请求
     shouldComponentUpdate(){
-        console.log(this.props.length)
+        // console.log(this.props.length)
         if(!this.state.titleList.length === 0 || !this.props){
             return false
         }
